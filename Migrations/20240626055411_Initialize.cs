@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SherconResort.Web.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Initialize : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,12 +17,14 @@ namespace SherconResort.Web.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    AccomodationType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RoomType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TotalOccupancy = table.Column<int>(type: "int", nullable: false),
-                    TotalBedrooms = table.Column<int>(type: "int", nullable: false),
-                    TotalBathRooms = table.Column<int>(type: "int", nullable: false),
+                    MaxOccupants = table.Column<int>(type: "int", nullable: false),
+                    NumberofBedrooms = table.Column<int>(type: "int", nullable: false),
+                    NumberOfBeds = table.Column<int>(type: "int", nullable: false),
+                    NumberOfBathRooms = table.Column<int>(type: "int", nullable: false),
                     HasKitchen = table.Column<bool>(type: "bit", nullable: false),
                     HasAircon = table.Column<bool>(type: "bit", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -59,8 +61,9 @@ namespace SherconResort.Web.Migrations
                     UserID = table.Column<int>(type: "int", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    TotalOccupants = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Total = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -91,7 +94,7 @@ namespace SherconResort.Web.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false),
                     RoomId = table.Column<int>(type: "int", nullable: false),
                     Rating = table.Column<int>(type: "int", nullable: false),
-                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Comment = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true)
                 },
                 constraints: table =>
                 {

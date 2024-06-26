@@ -46,7 +46,7 @@ namespace SherconResort.Web.Models
 
 		[Required]
 		[EnumDataType(typeof(Status))]
-		public string Status { get; set; }
+		public required string Status { get; set; }
 
 		[DataType(DataType.DateTime)]
 		public DateTime CreatedAt { get; set; }
@@ -54,7 +54,7 @@ namespace SherconResort.Web.Models
 		[DataType(DataType.DateTime)]
 		public DateTime UpdatedAt { get; set; }
 
-		public Room Room { get; set; }
-		public User User { get; set; }
+		public required Room Room { get; set; }
+		public required User User { get; set; }
 	}
 }

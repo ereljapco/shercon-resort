@@ -19,18 +19,18 @@ namespace SherconResort.Web.Models
 
 		[Required]
 		[StringLength(100, ErrorMessage = "Room name cannot exceed 100 characters.")]
-		public string Name { get; set; }
+		public required string Name { get; set; }
 
 		[StringLength(250, ErrorMessage = "Description cannot exceed 250 characters.")]
-		public string Description { get; set; }
+		public string? Description { get; set; }
 
 		[Required]
 		[EnumDataType(typeof(AccomodationType))]
-		public string AccomodationType { get; set; }
+		public required string AccomodationType { get; set; }
 
 		[Required]
 		[EnumDataType(typeof(RoomType))]
-		public string RoomType { get; set; }
+		public required string RoomType { get; set; }
 
 		[Required]
 		[Range(1, 100, ErrorMessage = "The maximum number of occupants must be between 1 and 100.")]
@@ -39,7 +39,6 @@ namespace SherconResort.Web.Models
 		[Range(0, 10, ErrorMessage = "The number of bedrooms must be between 1 and 10.")]
 		public int NumberofBedrooms { get; set; }
 
-		[Required]
 		[Range(0, 10, ErrorMessage = "The number of beds must be between 1 and 10.")]
 		public int NumberOfBeds { get; set; }
 
@@ -61,7 +60,7 @@ namespace SherconResort.Web.Models
 		[DataType(DataType.Date)]
 		public DateTime UpdatedAt { get; set; }
 
-		public ICollection<Reservation> Reservations { get; set; }
-		public ICollection<Review> Reviews { get; set; }
+		public ICollection<Reservation>? Reservations { get; set; }
+		public ICollection<Review>? Reviews { get; set; }
 	}
 }

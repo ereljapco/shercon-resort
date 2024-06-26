@@ -20,9 +20,9 @@ namespace SherconResort.Web.Models
 		public int Rating { get; set; }
 
 		[StringLength(250, ErrorMessage = "The comment must not exceed 250 characters.")]
-		public string Comment { get; set; }
+		public string? Comment { get; set; }
 
-		public User User { get; set; }
-		public Room Room { get; set; }
+		public required User User { get; set; }
+		public required Room Room { get; set; }
 	}
 }

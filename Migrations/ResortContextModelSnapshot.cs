@@ -49,7 +49,10 @@ namespace SherconResort.Web.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Total")
+                    b.Property<int>("TotalOccupants")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -76,8 +79,8 @@ namespace SherconResort.Web.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Comment")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<int>("Rating")
                         .HasColumnType("int");
@@ -105,12 +108,16 @@ namespace SherconResort.Web.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("AccomodationType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<bool>("HasAircon")
                         .HasColumnType("bit");
@@ -118,25 +125,29 @@ namespace SherconResort.Web.Migrations
                     b.Property<bool>("HasKitchen")
                         .HasColumnType("bit");
 
+                    b.Property<int>("MaxOccupants")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("NumberOfBathRooms")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumberOfBeds")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumberofBedrooms")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<string>("RoomType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TotalBathRooms")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TotalBedrooms")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TotalOccupancy")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
