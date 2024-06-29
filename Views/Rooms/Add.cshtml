@@ -1,0 +1,102 @@
+@model SherconResort.Web.Models.Room;
+
+@{
+	Layout = "_AdminLayout";
+	ViewData["Title"] = "Add Room";
+}
+
+<section class="container">
+	<h1>Add a New Room</h1>
+	<form class="form" asp-action="Add">
+		<div class="text-danger" asp-asp-validation-summary="ModelOnly"></div>
+		<div class="row mb-3 gap-3">
+			@* Accomodation Type *@
+			<fieldset class="form__fieldset col-md">
+				<legend class="form__legend">Accomodation Type</legend>
+				<div class="form-group p-3">
+				@foreach (var accomodationType in Enum.GetValues(typeof(AccomodationType)))
+				{	
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" asp-for="AccomodationType" id="@accomodationType" value="@accomodationType">
+						<label class="form-check-label" for="@accomodationType">@accomodationType</label>
+					</div>
+				}
+				</div>
+			</fieldset>
+			@* Room Type *@
+			<fieldset class="form__fieldset col-md">
+				<legend class="form__legend">Room Type</legend>
+				<div class="form-group p-3">
+				@foreach (var roomType in Enum.GetValues(typeof(RoomType)))
+				{
+					@* <p>@name</p> *@
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" asp-for="RoomType" id="@roomType" value="@roomType">
+						<label class="form-check-label" for="@roomType">@roomType</label>
+					</div>
+				}
+				</div>
+			</fieldset>
+		</div>
+		<div class="row">
+			<fieldset class="form__fieldset mb-3">
+				<legend class="form__legend">Room Detail</legend>
+				<div class="form-group p-3">
+					<label class="form__label form-label" for="Name">Name</label>
+					<input class="form__input form-control" id="Name" asp-for="Name" type="text">
+				</div>
+				<div class="form-group p-3">
+					<label class="form-label" for="MaxOccupants">Guests</label>
+					<input class="form-control" id="MaxOccupants" asp-for="MaxOccupants" type="number">
+				</div>
+				<div class="form-group p-3">
+					<label class="form-label" for="Price">Price</label>
+					<div class="input-group">
+						<span class="input-group-text">₱</span>
+						<input class="input__price form-control" id="Price" asp-for="Price" type="number">
+						<span class="input-group-text">.00</span>
+					</div>
+				</div>
+				<div class="form-group p-3">
+					<label class="form__label form-label" for="Description">Description</label>
+					<textarea class="form__textarea form-control" id="Description" asp-for="Description" rows="5"></textarea>
+				</div>
+			</fieldset>
+		</div>
+		<div class="row">
+			<fieldset class="form__fieldset mb-3">
+				<legend class="form__legend">Bed and Bath</legend>
+				<div class="form-group p-3">
+					<label for="NumberofBedrooms" class="form-label">Bedrooms</label>
+					<input class="form-control" id="NumberofBedrooms" asp-for="NumberofBedrooms" type="number">
+				</div>
+				<div class="form-group p-3">
+					<label for="NumberOfBeds" class="form-label">Beds</label>
+					<input class="form-control" id="NumberOfBeds" asp-for="NumberOfBeds" type="number">
+				</div>
+				<div class="form-group p-3">
+					<label for="NumberOfBathrooms" class="form-label">Bathrooms</label>
+					<input class="form-control" id="NumberOfBathrooms" asp-for="NumberOfBathRooms" type="number">
+				</div>
+			</fieldset>
+		</div>
+		<div class="row">
+			<fieldset class="form__fieldset mb-3">
+				<legend class="form__legend">Amenities</legend>
+				<div class="form-group p-3">
+					<div class="form-check form-check-inline">
+						<label class="form-label" for="HasKitchen">Kitchen</label>
+						<input class="form-check-input" id="HasKitchen" asp-for="HasKitchen" type="checkbox">
+					</div>
+				</div>
+				<div class="form-group p-3">
+					<div class="form-check form-check-inline">
+						<label class="form-label" for="HasAircon">Aircon</label>
+						<input class="form-check-input" id="HasAircon" asp-for="HasAircon" type="checkbox">
+					</div>
+				</div>
+			</fieldset>
+		</div>
+		<button class="btn btn-primary" type="submit">Add Room</button>
+	</form>
+</section>

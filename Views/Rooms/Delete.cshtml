@@ -1,0 +1,59 @@
+@model SherconResort.Web.Models.Room
+
+@{
+	Layout = "_AdminLayout";
+	ViewData["Title"] = "Delete";
+}
+
+<header class="main__header d-flex align-items-center justify-content-between mb-3">
+	<h1 class="main__title mb-0">@ViewData["Title"]</h1>
+	<p class="bg-danger-subtle">@ViewData["ErrorMessage"]</p>
+	<p class="bg-warning-subtle">Are you sure you want to delete this room?</p>
+</header>
+<section class="rooms-table-container">
+	<h2 class="description-list__title">Room Detail</h2>
+	<dl class="description__list">
+		<dt class="description__title">
+			@Html.DisplayNameFor(model => model.Name)
+		</dt>
+		<dd class="description__detail">
+			@Html.DisplayFor(model => model.Name)
+		</dd>
+		<dt class="description__title">
+			@Html.DisplayNameFor(model => model.Description)
+		</dt>
+		<dd class="description__detail">
+			@Html.DisplayFor(model => model.Description)
+		</dd>
+		<dt class="description__title">
+			@Html.DisplayNameFor(model => model.AccomodationType)
+		</dt>
+		<dd class="description__detail">
+			@Html.DisplayFor(model => model.AccomodationType)
+		</dd>
+		<dt class="description__title">
+			@Html.DisplayNameFor(model => model.RoomType)
+		</dt>
+		<dd class="description__detail">
+			@Html.DisplayFor(model => model.RoomType)
+		</dd>
+		<dt class="description__title">
+			@Html.DisplayNameFor(model => model.MaxOccupants)
+		</dt>
+		<dd class="description__detail">
+			@Html.DisplayFor(model => model.MaxOccupants)
+		</dd>
+		<dt class="description__title">
+			@Html.DisplayNameFor(model => model.MaxOccupants)
+		</dt>
+		<dd class="description__detail">
+			@Html.DisplayFor(model => model.MaxOccupants)
+		</dd>
+	</dl>
+
+	<form class="form" asp-action="Delete">
+		<input type="hidden" asp-for="Id">
+		<input class="btn btn-danger bg-danger-subtle" type="submit" value="Delete"> |
+		<a asp-action="Main">Back to List</a>
+	</form>
+</section>

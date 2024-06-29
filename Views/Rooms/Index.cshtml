@@ -1,7 +1,27 @@
+@model IEnumerable<SherconResort.Web.Models.Room>
+
 @{
     ViewData["Title"] = "Rooms";
 }
 
 <div class="text-center">
     <h1 class="display-4">Rooms</h1>
+    <section class="rooms-grid container">
+        <div class="rooms-container container">
+            <div class="row gx-5 gy-8">
+                @foreach (var item in Model)
+                {
+                <article class="room-card card col-lg-3 col-md-4 col-sm-6">
+                    <img src="https://www.sherconresort.net/uploads/2/9/4/1/2941832/img-0225_orig.jpg" alt="" class="room-card__img card-img-top">
+                    <div class="card-body">
+                        <h1 class="room-card__title card-title">@Html.DisplayFor(modelItem => item.Name)</h1>
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                        <p class="card-text"><strong>@Html.DisplayFor(modelItem => item.Price)</strong></p>
+                        <a href="#" class="btn btn-primary">Book</a>
+                    </div>
+                </article>
+                }
+            </div>
+        </div>
+    </section>
 </div>

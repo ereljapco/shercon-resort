@@ -1,0 +1,37 @@
+@model IEnumerable<SherconResort.Web.Models.Room>
+
+@{
+	Layout = "_AdminLayout";
+	ViewData["Title"] = "Rooms";
+}
+
+<header class="main__header d-flex align-items-center justify-content-between mb-3">
+	<h1 class="main__title mb-0">@ViewData["Title"]</h1>
+	<a class="btn btn-primary" asp-controller="Rooms" asp-action="Add">Add a New Room</a>
+</header>
+<section class="rooms-table-container">
+	<table class="main__table table">
+		<thead>
+			<th class="main__table-head">@Html.DisplayNameFor(model => model.Id)</th>
+			<th class="main__table-head">@Html.DisplayNameFor(model => model.Name)</th>
+			<th class="main__table-head">@Html.DisplayNameFor(model => model.AccomodationType)</th>
+			<th class="main__table-head">@Html.DisplayNameFor(model => model.RoomType)</th>
+			<th class="main__table-head">Actions</th>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr class="main__table-row">
+					<td class="main__table-col">@Html.DisplayFor(modelItem => item.Id)</td>
+					<td class="main__table-col">@Html.DisplayFor(modelItem => item.Name)</td>
+					<td class="main__table-col">@Html.DisplayFor(modelItem => item.AccomodationType)</td>
+					<td class="main__table-col">@Html.DisplayFor(modelItem => item.RoomType)</td>
+					<td class="main__table-col">
+						<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+						<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</section>
