@@ -3,15 +3,21 @@ using SherconResort.Web.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
-
 // Add custom repository and add connection string
 builder.Services.AddDbContext<ResortContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ResortConnection")));
 
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+
 // Build app
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    SeedData.Initialize(services);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
