@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SherconResort.Web.Data;
+using SherconResort.Web.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,9 @@ builder.Services.AddDbContext<ResortContext>(options => options.UseSqlServer(bui
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddAuthorization();
+// builder.Services.AddIdentityApiEndpoints<IdentityRole>().AddEntityFrameworkStores<ResortContext>().AddDefaultTokenProviders();
+builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ResortContext>().AddDefaultTokenProviders();
 
 // Build app
 var app = builder.Build();
@@ -32,7 +37,10 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
+
+// app.MapIdentityApi<IdentityUser>();
 
 app.MapControllerRoute(
     name: "default",
