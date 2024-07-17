@@ -4,21 +4,46 @@
 <p>Fill the form to create an account.</p>
 
 <form asp-action="Register" method="POST">
-	<div class="form-group">
-		<label asp-for="Email" class="control-label"></label>
-		<input asp-for="Email" class="form-control">
-		<span asp-validation-for="Email" class="text-danger"></span>
-	</div>
-	<div class="form-group">
-		<label asp-for="Password" class="control-label"></label>
-		<input asp-for="Password" class="form-control">
-		<span asp-validation-for="Password" class="text-danger"></span>
-	</div>
-	<div class="form-group">
-		<label asp-for="ConfirmPassword" class="control-label"></label>
-		<input asp-for="ConfirmPassword" class="form-control">
-		<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-	</div>
+	<fieldset>
+		<legend>Full name</legend>
+		<div class="form-group">
+			<label class="control-label" asp-for="FirstName"></label>
+			<input class="form-control" asp-for="FirstName">
+		</div>
+		<div class="form-group">
+			<label class="control-label" asp-for="LastName"></label>
+			<input class="form-control" asp-for="LastName">
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Date of birth</legend>
+		<div class="form-group">
+			<label class="control-label" asp-for="BirthDate" id="BirthDate"></label>
+			<input class="form-control" asp-for="BirthDate" max="@DateTime.Now.ToString("yyyy-MM-dd")">
+			<span asp-validation-for="BirthDate" class="text-danger"></span>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Contact info</legend>
+		<div class="form-group">
+			<label asp-for="Email" class="control-label"></label>
+			<input asp-for="Email" class="form-control">
+			<span asp-validation-for="Email" class="text-danger"></span>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Password</legend>
+		<div class="form-group">
+			<label asp-for="Password" class="control-label"></label>
+			<input asp-for="Password" class="form-control">
+			<span asp-validation-for="Password" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="ConfirmPassword" class="control-label"></label>
+			<input asp-for="ConfirmPassword" class="form-control">
+			<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+		</div>
+	</fieldset>
 	<div class="form-group">
 		<input type="submit" value="Register" class="btn btn-primary">
 	</div>

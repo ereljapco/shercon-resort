@@ -22,12 +22,16 @@ public class AccountController : Controller
 
 	public IActionResult Index()
 	{
+		ViewData["Title"] = "Account Settings";
+
 		return View();
 	}
 
 	[HttpGet]
 	public IActionResult Register()
 	{
+		ViewData["Title"] = "Sign Up";
+
 		return View();
 	}
 
@@ -40,6 +44,14 @@ public class AccountController : Controller
 		{
 			User user = new User
 			{
+				FirstName = model.FirstName,
+				LastName = model.LastName,
+				BirthDate = model.BirthDate,
+				StreetAddress = model.StreetAddress,
+				City = model.City,
+				State = model.State,
+				Country = model.Country,
+				ZIPCode = model.ZIPCode,
 				UserName = model.Email,
 				Email = model.Email,
 				RegistrationDate = DateTime.Now
@@ -57,7 +69,7 @@ public class AccountController : Controller
 			{
 				foreach (IdentityError error in result.Errors)
 				{
-					ModelState.AddModelError("", error.Description);
+					ModelState.AddModelError(string.Empty, error.Description);
 					Console.WriteLine(error.Description);
 				}
 			}
